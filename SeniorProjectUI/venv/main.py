@@ -13,9 +13,9 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QIcon('beer_detail.png'))
 
 
-@pyqtSlot()
-def on_pushButton_clicked(self):
-    print("hi")
+    @pyqtSlot()
+    def on_pushButton_clicked(self):
+        print("hi")
 
 
 if __name__ == "__main__":
