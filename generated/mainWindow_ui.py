@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\USER\PycharmProjects\Senior-Project\gui\mainWindow.ui'
+# Form implementation generated from reading ui file 'C:\Users\Colin Gibbons\PycharmProjects\Senior-Project\gui\mainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.14.1
 #
 # WARNING! All changes made in this file will be lost!
 
