@@ -91,6 +91,16 @@
       <height>351</height>
      </rect>
     </property>
+    <widget class="QWidget" name="graphWidget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>-50</y>
+       <width>491</width>
+       <height>371</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

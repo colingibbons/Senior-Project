@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Colin Gibbons\PycharmProjects\Senior-Project\gui\mainWindow.ui'
+# Form implementation generated from reading ui file 'C:\Users\USER\PycharmProjects\Senior-Project\gui\mainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -49,6 +49,9 @@ class Ui_BrewMaster(object):
         self.plotWidget = QtWidgets.QWidget(self.centralwidget)
         self.plotWidget.setGeometry(QtCore.QRect(0, 230, 841, 351))
         self.plotWidget.setObjectName("plotWidget")
+        self.graphWidget = QtWidgets.QWidget(self.plotWidget)
+        self.graphWidget.setGeometry(QtCore.QRect(10, -50, 491, 371))
+        self.graphWidget.setObjectName("graphWidget")
         BrewMaster.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(BrewMaster)

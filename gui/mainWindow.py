@@ -10,6 +10,8 @@ from PyQt5.QtGui import *
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as figureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as navigationToolbar
 from matplotlib.figure import Figure
+from matplotlib.pyplot import *
+
 from util.fileDialog import FileDialog
 from generated import mainWindow_ui
 from pathlib import Path
@@ -26,6 +28,13 @@ class MainWindow(QMainWindow, mainWindow_ui.Ui_BrewMaster):
         self.setWindowTitle("BrewMaster Homebrewing Assistant")
         self.setWindowIcon(QIcon('beer_detail.png'))
 
+        self.timeList = []
+        self.tempList = []
+        self.pHList = []
+
+
+
+
     @pyqtSlot()
     def on_searchForData_clicked(self):
         # Opens file explorer so user can select text file containing brew data
@@ -38,6 +47,22 @@ class MainWindow(QMainWindow, mainWindow_ui.Ui_BrewMaster):
         # populates text box with path of chosen file, opens the file, and reads contents line-by-line
         self.dataSearchText.setText(str(cleanPath))
         file = open(cleanPath, 'r')
-        data = file.readlines()
-        
-        file.close()
+        dataList = file.read().splitlines()
+
+        headers = dataList[0]
+        for i in range(1, len(dataList)):
+
+            currentData = dataList[i].split(',')
+
+            time = float(currentData[0].strip())
+            self.timeList.append(time)
+
+            temp = float(currentData[1].strip())
+            self.tempList.append(temp)
+
+            pH = float(currentData[2].strip())
+            self.pHList.append(pH)
+
+
+            tempPlot = plot(self.timeList[i], self.tempList[i])
+            self.graphWidget.plot = tempPlot
