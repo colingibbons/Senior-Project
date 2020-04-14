@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>840</width>
-    <height>579</height>
+    <width>880</width>
+    <height>611</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>250</x>
       <y>0</y>
       <width>401</width>
       <height>71</height>
@@ -56,54 +56,63 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_3">
+   <widget class="SliceWidget" name="plotWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>120</y>
-      <width>161</width>
-      <height>31</height>
+      <x>60</x>
+      <y>170</y>
+      <width>601</width>
+      <height>411</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QRadioButton" name="tempButton">
-       <property name="text">
-        <string>Temperature</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="pHButton">
-       <property name="text">
-        <string>pH</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="tabletTracking">
+     <bool>false</bool>
+    </property>
    </widget>
-   <widget class="QWidget" name="plotWidget" native="true">
+   <widget class="QCheckBox" name="pHButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>230</y>
-      <width>841</width>
-      <height>351</height>
+      <x>240</x>
+      <y>130</y>
+      <width>81</width>
+      <height>16</height>
      </rect>
     </property>
-    <widget class="QWidget" name="graphWidget" native="true">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>-50</y>
-       <width>491</width>
-       <height>371</height>
-      </rect>
-     </property>
-    </widget>
+    <property name="text">
+     <string>pH</string>
+    </property>
    </widget>
+   <widget class="QCheckBox" name="temperatureButton">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>130</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Temperature</string>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>horizontalLayoutWidget_2</zorder>
+   <zorder>pHButton</zorder>
+   <zorder>temperatureButton</zorder>
+   <zorder>plotWidget</zorder>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SliceWidget</class>
+   <extends>QWidget</extends>
+   <header>gui/sliceWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
