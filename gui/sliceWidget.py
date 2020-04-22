@@ -38,8 +38,8 @@ class SliceWidget(FigureCanvas):
         self.toolbar.hide()
 
         # Update size policy and geometry
-        FigureCanvas.setSizePolicy(self, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        FigureCanvas.updateGeometry(self)
+        #FigureCanvas.setSizePolicy(self, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        #FigureCanvas.updateGeometry(self)
 
     def plotTemperature(self, time, temp):
 
@@ -53,17 +53,24 @@ class SliceWidget(FigureCanvas):
         self.axes.plot(time, pH, label='pH', color='blue')
         self.draw()
 
-    def plotBoth(self, time, temp, pH):
+    def plotBoth(self, tempTime, temp, pHTime, pH):
 
         self.figure, self.axes = plt.subplots(2,1)
-        self.axes[0].plot(time, temp, color='red')
+        self.axes[0].plot(tempTime, temp, color='red')
         self.axes[0].set_title('Temperature')
-        self.axes[1].plot(time, pH, color='blue')
+        self.axes[1].plot(pHTime, pH, color='blue')
         self.axes[1].set_title('pH')
 
         self.draw()
 
     def clearFigure(self):
+
         self.axes = self.figure.add_axes((1 / 12, 1 / 12, 11 / 12, 11 / 12), facecolor='white')
         self.axes.clear()
+        self.draw()
+
+    def clearBoth(self):
+
+        self.axes[0].clear()
+        self.axes[1].clear()
         self.draw()

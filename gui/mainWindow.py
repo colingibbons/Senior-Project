@@ -35,15 +35,50 @@ class MainWindow(QMainWindow, mainWindow_ui.Ui_BrewMaster):
         self.setWindowTitle("BrewMaster Homebrewing Assistant")
         self.setWindowIcon(QIcon('beer_detail.png'))
 
-        self.timeList = []
+        self.tempTimeList = []
+        self.pHTimeList = []
         self.tempList = []
         self.pHList = []
+        self.averageTemp = 0
+        self.averagepH = 0
+        self.maximumTemp = 0
+        self.minimumTemp = 0
+        self.maximumpH = 0
+        self.minimumpH = 0
+
+
+
+
+    def dataStats(self):
+
+        #Finds the min and max temp
+        self.maximumTemp = max(self.tempList)
+        self.minimumTemp = min(self.tempList)
+
+        #Finds average temp
+        tempSum = 0
+        for i in range(len(self.tempList)):
+            tempSum = tempSum + self.tempList[i]
+            self.averageTemp = tempSum/(len(self.tempList))
+
+        #Finds min and max pH
+        self.maximumpH = max(self.pHList)
+        self.minimumpH = min(self.pHList)
+
+        #Finds average pH
+        pHSum = 0
+        for i in range(len(self.pHList)):
+            pHSum = pHSum + self.pHList[i]
+            self.averagepH = pHSum/(len(self.pHList))
+
+
+
 
 
     @pyqtSlot()
     def on_plotWidget_mouseMoved(self, event):
         pass
-        # print('on_sliceWidgetBMode_mouseMoved')
+
 
     @pyqtSlot()
     def on_plotWidget_keyPressed(self, event):
@@ -67,50 +102,74 @@ class MainWindow(QMainWindow, mainWindow_ui.Ui_BrewMaster):
         file = open(cleanPath, 'r')
         dataList = file.read().splitlines()
 
-        headers = dataList[0]
-        for i in range(1, len(dataList)):
+        tempReadingTime = dataList[0].split(':')
+        tempInterval = int(tempReadingTime[1])
+        pHReadingTime = dataList[1].split(':')
+        pHInterval = int(pHReadingTime[1])
+        for i in range(2, len(dataList)):
 
             #extracts time, temperature, and pH data from the text file and categorizes the information into their own lists
-            currentData = dataList[i].split(',')
+            currentData = dataList[i].split(':')
 
-            time = float(currentData[0].strip())
-            self.timeList.append(time)
+            dataType = (currentData[0].strip())
 
-            temp = float(currentData[1].strip())
-            self.tempList.append(temp)
+            if 'T' in dataType:
 
-            pH = float(currentData[2].strip())
-            self.pHList.append(pH)
+                index = int(dataType[1:])
+                tempTime = int(index * tempInterval)
+                self.tempTimeList.append(tempTime)
+
+                temp = float(currentData[1].strip())
+                self.tempList.append(temp)
+
+            if 'P' in dataType:
+
+                index = int(dataType[1:])
+                pHTime = int(index * pHInterval)
+                self.pHTimeList.append(pHTime)
+
+                pH = float(currentData[1].strip())
+                self.pHList.append(pH)
+
+                self.avgTemp.setText("Average Temperature: %d" % self.averageTemp)
+                self.avgpH.setText("Average pH: %d" % self.averagepH)
+                self.maxTemp.setText("Maximum Temperature: %d" % self.maximumTemp)
+                self.maxpH.setText("Maximum pH: %d" % self.maximumpH)
+                self.minTemp.setText("Minimum Temperature: %d" % self.minimumTemp)
+                self.minpH.setText("Minimum pH: %d" % self.minimumpH)
+
 
     @pyqtSlot(bool)
     def on_temperatureButton_toggled(self, checked):
         print("temperature box checked")
         if self.temperatureButton.isChecked() == False:
+            self.plotWidget.clearBoth()
             self.plotWidget.clearFigure()
 
         if self.temperatureButton.isChecked():
-            self.plotWidget.plotTemperature(self.timeList, self.tempList)
+            self.plotWidget.plotTemperature(self.tempTimeList, self.tempList)
         if self.pHButton.isChecked():
-            self.plotWidget.plotpH(self.timeList, self.pHList)
+            self.plotWidget.plotpH(self.pHTimeList, self.pHList)
 
         if self.pHButton.isChecked() and self.temperatureButton.isChecked():
             self.plotWidget.clearFigure()
-            self.plotWidget.plotBoth(self.timeList, self.tempList, self.pHList)
+            self.plotWidget.plotBoth(self.tempTimeList, self.tempList, self.pHTimeList, self.pHList)
 
     @pyqtSlot(bool)
     def on_pHButton_toggled(self, checked):
         print('pH box checked')
         if self.pHButton.isChecked() == False:
+            self.plotWidget.clearBoth
             self.plotWidget.clearFigure()
 
         if self.pHButton.isChecked():
-            self.plotWidget.plotpH(self.timeList, self.pHList)
+            self.plotWidget.plotpH(self.pHTimeList, self.pHList)
         if self.temperatureButton.isChecked():
-            self.plotWidget.plotTemperature(self.timeList, self.tempList)
+            self.plotWidget.plotTemperature(self.tempTimeList, self.tempList)
 
 
         if self.temperatureButton.isChecked() and self.pHButton.isChecked():
             self.plotWidget.clearFigure()
-            self.plotWidget.plotBoth(self.timeList, self.tempList, self.pHList)
+            self.plotWidget.plotBoth(self.tempTimeList, self.tempList, self.pHTimeList, self.pHList)
 
 
