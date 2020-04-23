@@ -100,11 +100,25 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>1</number>
        </property>
        <widget class="SliceWidget" name="tempPlot"/>
-       <widget class="SliceWidget" name="pHPlot"/>
-       <widget class="SliceWidget" name="bothPlot"/>
+       <widget class="SliceWidget" name="pHPlot">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+       <widget class="SliceWidget" name="bothPlot">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
       </widget>
      </item>
     </layout>

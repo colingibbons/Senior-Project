@@ -45,21 +45,32 @@ class SliceWidget(FigureCanvas):
 
         #plots the temperature versus time
         self.axes.plot(time, temp, label='Temperature', color='red')
+        self.axes.set_title('Temperature vs. Time')
+        self.axes.set_xlabel('Time (s)')
+        self.axes.set_ylabel('Temperature (degrees)')
         self.draw()
 
     def plotpH(self, time, pH):
 
         #plots the pH versus time
         self.axes.plot(time, pH, label='pH', color='blue')
+        self.axes.set_title('pH vs Time')
+        self.axes.set_xlabel('Time (s)')
+        self.axes.set_ylabel('pH')
         self.draw()
 
     def plotBoth(self, tempTime, temp, pHTime, pH):
 
         self.figure, self.axes = plt.subplots(2,1)
         self.axes[0].plot(tempTime, temp, color='red')
-        self.axes[0].set_title('Temperature')
+        self.axes[0].set_title('Temperature vs. Time')
+        self.axes[0].set_xlabel('Time (s)')
+        self.axes[0].set_ylabel('Temperature (degrees)')
         self.axes[1].plot(pHTime, pH, color='blue')
-        self.axes[1].set_title('pH')
+        self.axes[1].set_title('pH vs Time')
+        self.axes[1].set_xlabel('Time (s)')
+        self.axes[1].set_ylabel('pH')
+        plt.tight_layout()
 
         self.draw()
 
@@ -69,8 +80,3 @@ class SliceWidget(FigureCanvas):
         self.axes.clear()
         self.draw()
 
-    def clearBoth(self):
-
-        self.axes[0].clear()
-        self.axes[1].clear()
-        self.draw()

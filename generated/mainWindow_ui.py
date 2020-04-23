@@ -66,9 +66,19 @@ class Ui_BrewMaster(object):
         self.tempPlot.setObjectName("tempPlot")
         self.plotWidget.addWidget(self.tempPlot)
         self.pHPlot = SliceWidget()
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pHPlot.sizePolicy().hasHeightForWidth())
+        self.pHPlot.setSizePolicy(sizePolicy)
         self.pHPlot.setObjectName("pHPlot")
         self.plotWidget.addWidget(self.pHPlot)
         self.bothPlot = SliceWidget()
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.bothPlot.sizePolicy().hasHeightForWidth())
+        self.bothPlot.setSizePolicy(sizePolicy)
         self.bothPlot.setObjectName("bothPlot")
         self.plotWidget.addWidget(self.bothPlot)
         self.horizontalLayout_3.addWidget(self.plotWidget)
@@ -113,7 +123,7 @@ class Ui_BrewMaster(object):
         BrewMaster.setCentralWidget(self.centralWidget)
 
         self.retranslateUi(BrewMaster)
-        self.plotWidget.setCurrentIndex(2)
+        self.plotWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(BrewMaster)
 
     def retranslateUi(self, BrewMaster):
