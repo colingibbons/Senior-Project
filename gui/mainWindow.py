@@ -72,9 +72,6 @@ class MainWindow(QMainWindow, mainWindow_ui.Ui_BrewMaster):
             self.averagepH = pHSum/(len(self.pHList))
 
 
-
-
-
     @pyqtSlot()
     def on_plotWidget_mouseMoved(self, event):
         pass
@@ -131,12 +128,13 @@ class MainWindow(QMainWindow, mainWindow_ui.Ui_BrewMaster):
                 pH = float(currentData[1].strip())
                 self.pHList.append(pH)
 
-                self.avgTemp.setText("Average Temperature: %d" % self.averageTemp)
-                self.avgpH.setText("Average pH: %d" % self.averagepH)
-                self.maxTemp.setText("Maximum Temperature: %d" % self.maximumTemp)
-                self.maxpH.setText("Maximum pH: %d" % self.maximumpH)
-                self.minTemp.setText("Minimum Temperature: %d" % self.minimumTemp)
-                self.minpH.setText("Minimum pH: %d" % self.minimumpH)
+        self.dataStats()
+        self.avgTemp.setText("Average Temperature: %.2f" % self.averageTemp)
+        self.avgpH.setText("Average pH: %.2f" % self.averagepH)
+        self.maxTemp.setText("Maximum Temperature: %.2f" % self.maximumTemp)
+        self.maxpH.setText("Maximum pH: %.2f" % self.maximumpH)
+        self.minTemp.setText("Minimum Temperature: %.2f" % self.minimumTemp)
+        self.minpH.setText("Minimum pH: %.2f" % self.minimumpH)
 
 
     @pyqtSlot(bool)

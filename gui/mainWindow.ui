@@ -86,7 +86,7 @@
      <rect>
       <x>10</x>
       <y>160</y>
-      <width>1101</width>
+      <width>1061</width>
       <height>731</height>
      </rect>
     </property>
@@ -126,15 +126,21 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>1120</x>
+      <x>1080</x>
       <y>160</y>
-      <width>191</width>
+      <width>231</width>
       <height>601</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="maxTemp">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
         <string>Maximum Temperature:</string>
        </property>
@@ -142,6 +148,12 @@
      </item>
      <item>
       <widget class="QLabel" name="minTemp">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
         <string>Minimum Temperature: </string>
        </property>
@@ -149,6 +161,12 @@
      </item>
      <item>
       <widget class="QLabel" name="avgTemp">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
         <string>Average Temperature: </string>
        </property>
@@ -156,6 +174,12 @@
      </item>
      <item>
       <widget class="QLabel" name="maxpH">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
         <string>Maximum pH:</string>
        </property>
@@ -163,6 +187,12 @@
      </item>
      <item>
       <widget class="QLabel" name="minpH">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
         <string>Minimum pH: </string>
        </property>
@@ -170,6 +200,12 @@
      </item>
      <item>
       <widget class="QLabel" name="avgpH">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
         <string>Average pH: </string>
        </property>

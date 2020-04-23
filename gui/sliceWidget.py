@@ -54,7 +54,7 @@ class SliceWidget(FigureCanvas):
 
         #plots the pH versus time
         self.axes.plot(time, pH, label='pH', color='blue')
-        self.axes.set_title('pH vs Time')
+        self.axes.set_title('pH vs. Time')
         self.axes.set_xlabel('Time (s)')
         self.axes.set_ylabel('pH')
         self.draw()
@@ -71,7 +71,6 @@ class SliceWidget(FigureCanvas):
         self.axes[1].set_xlabel('Time (s)')
         self.axes[1].set_ylabel('pH')
         plt.tight_layout()
-
         self.draw()
 
     def clearFigure(self):
