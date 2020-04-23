@@ -28,9 +28,9 @@ class MainWindow(QMainWindow, mainWindow_ui.Ui_BrewMaster):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
 
-        self.plotWidget.mpl_connect('motion_notify_event', self.on_plotWidget_mouseMoved)
-        self.plotWidget.mpl_connect('key_press_event', self.on_plotWidget_keyPressed)
-        self.plotWidget.mpl_connect('button_press_event', self.on_plotWidget_clicked)
+        #self.plotWidget.mpl_connect('motion_notify_event', self.on_plotWidget_mouseMoved)
+        #self.plotWidget.mpl_connect('key_press_event', self.on_plotWidget_keyPressed)
+        #self.plotWidget.mpl_connect('button_press_event', self.on_plotWidget_clicked)
 
         self.setWindowTitle("BrewMaster Homebrewing Assistant")
         self.setWindowIcon(QIcon('beer_detail.png'))
@@ -143,33 +143,40 @@ class MainWindow(QMainWindow, mainWindow_ui.Ui_BrewMaster):
     def on_temperatureButton_toggled(self, checked):
         print("temperature box checked")
         if self.temperatureButton.isChecked() == False:
-            self.plotWidget.clearBoth()
-            self.plotWidget.clearFigure()
+            self.plotWidget.setCurrentIndex(1)
+            if self.pHButton.isChecked() == False:
+                self.pHPlot.clearFigure()
+
 
         if self.temperatureButton.isChecked():
-            self.plotWidget.plotTemperature(self.tempTimeList, self.tempList)
+            self.plotWidget.setCurrentIndex(0)
+            self.tempPlot.plotTemperature(self.tempTimeList, self.tempList)
         if self.pHButton.isChecked():
-            self.plotWidget.plotpH(self.pHTimeList, self.pHList)
+            self.plotWidget.setCurrentIndex(1)
+            self.pHPlot.plotpH(self.pHTimeList, self.pHList)
 
         if self.pHButton.isChecked() and self.temperatureButton.isChecked():
-            self.plotWidget.clearFigure()
-            self.plotWidget.plotBoth(self.tempTimeList, self.tempList, self.pHTimeList, self.pHList)
+            self.plotWidget.setCurrentIndex(2)
+            self.bothPlot.plotBoth(self.tempTimeList, self.tempList, self.pHTimeList, self.pHList)
 
     @pyqtSlot(bool)
     def on_pHButton_toggled(self, checked):
         print('pH box checked')
         if self.pHButton.isChecked() == False:
-            self.plotWidget.clearBoth
-            self.plotWidget.clearFigure()
+            self.plotWidget.setCurrentIndex(0)
+            if self.temperatureButton.isChecked() == False:
+                self.tempPlot.clearFigure()
 
         if self.pHButton.isChecked():
-            self.plotWidget.plotpH(self.pHTimeList, self.pHList)
+            self.plotWidget.setCurrentIndex(1)
+            self.pHPlot.plotpH(self.pHTimeList, self.pHList)
         if self.temperatureButton.isChecked():
-            self.plotWidget.plotTemperature(self.tempTimeList, self.tempList)
+            self.plotWidget.setCurrentIndex(0)
+            self.tempPlot.plotTemperature(self.tempTimeList, self.tempList)
 
 
         if self.temperatureButton.isChecked() and self.pHButton.isChecked():
-            self.plotWidget.clearFigure()
-            self.plotWidget.plotBoth(self.tempTimeList, self.tempList, self.pHTimeList, self.pHList)
+            self.plotWidget.setCurrentIndex(2)
+            self.bothPlot.plotBoth(self.tempTimeList, self.tempList, self.pHTimeList, self.pHList)
 
 
